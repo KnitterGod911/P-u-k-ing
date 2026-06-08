@@ -2,9 +2,9 @@ const themeLink = document.getElementById('themeStylesheet');
 const themeButtons = Array.from(document.querySelectorAll('.toggle-option'));
 
 const themes = {
-  dark: 'css/themes/dark.css',
-  light: 'css/themes/light.css',
-  neon: 'css/themes/neon.css'
+  dark: './css/themes/dark.css',
+  light: './css/themes/light.css',
+  neon: './css/themes/neon.css'
 };
 
 function setActiveThemeButton(theme) {
