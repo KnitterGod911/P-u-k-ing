@@ -1,0 +1,17 @@
+:root {
+  --background: #04050b;
+  --surface: rgba(4, 5, 11, 0.96);
+  --surface-soft: rgba(10, 12, 24, 0.9);
+  --surface-strong: #08101f;
+  --text-primary: #e7f3ff;
+  --text-secondary: #8ab7ff;
+  --accent: #32e2ff;
+  --accent-strong: #7b44ff;
+  --accent-soft: rgba(50, 226, 255, 0.18);
+  --danger: #ff4d94;
+  --success: #6aff90;
+  --border: rgba(50, 226, 255, 0.15);
+  --brand-bg: linear-gradient(135deg, #32e2ff, #7b44ff);
+  --brand-text: #02081a;
+  --accent-rgb: 50, 226, 255;
+}

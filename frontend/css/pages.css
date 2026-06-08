@@ -1,0 +1,193 @@
+.hero-card,
+.info-card,
+.game-card,
+.calculator-card,
+.profile-card,
+.profile-stats-card,
+.settings-card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.hero-card h1,
+.section-header h2,
+.profile-card h3,
+.settings-card h3,
+.game-card h3 {
+  margin: 0;
+}
+
+.hero-card p,
+.info-card p,
+.profile-card p,
+.settings-card p,
+.message p,
+.chat-message p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.card-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.recent-activity-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.profile-quick {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.section-header .chat-status,
+.section-header .score-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: var(--text-secondary);
+}
+
+.game-card-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.game-card {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.game-panel {
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+}
+
+.rps-grid,
+.stats-grid,
+.tic-grid {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.rps-grid,
+.stats-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tic-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tic-cell,
+.calc-btn,
+.operation-btn,
+.rps-btn {
+  min-height: 72px;
+}
+
+.calc-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.calc-btn.double {
+  grid-column: span 2;
+}
+
+.calculator-card {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.calc-screen {
+  background: var(--surface-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  min-height: 84px;
+  display: grid;
+  place-items: center end;
+  font-size: 2rem;
+  font-family: var(--font-mono);
+}
+
+.chat-room,
+.chat-box {
+  min-height: 360px;
+  overflow-y: auto;
+}
+
+.profile-grid,
+.settings-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.profile-grid {
+  grid-template-columns: 320px 1fr;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stats-grid div {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.settings-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.settings-card {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.auth-modal label {
+  color: var(--text-primary);
+}
+
+.auth-modal input,
+.auth-modal textarea {
+  width: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-card,
+  .profile-grid,
+  .settings-grid,
+  .game-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
