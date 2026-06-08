@@ -31,6 +31,7 @@
         <a class="nav-link" href="./chat.html">Group Chat</a>
         <a class="nav-link" href="./profile.html">Profile</a>
         <a class="nav-link" href="./settings.html">Settings</a>
+        <a class="nav-link admin-link hidden" href="./admin.html">Admin Panel</a>
       </nav>
     </aside>
     <main class="main-panel">
@@ -89,6 +90,7 @@
             </div>
             <p class="chat-note">Type a message to begin. Your name is saved locally for the next session.</p>
           </div>
+          <div class="ban-notice hidden" id="banNotice"></div>
           <div class="chat-room" id="messageFeed"></div>
           <div class="chat-input-row">
             <input id="chatMessageInput" type="text" placeholder="Type a message..." autocomplete="off" />

@@ -180,17 +180,44 @@ function loadNumberGuess() {
   });
 }
 
+function getSelectedGameFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('game');
+}
+
+function setActiveGameCard(gameId) {
+  document.querySelectorAll('.game-card').forEach(card => {
+    card.classList.toggle('active', card.dataset.game === gameId);
+  });
+}
+
 function initGameNavigation() {
-  document.querySelectorAll('.game-card button').forEach(button => {
-    button.addEventListener('click', () => {
-      const card = button.closest('.game-card');
-      mountGame(card.dataset.game);
+  document.querySelectorAll('.game-card a').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const card = link.closest('.game-card');
+      const game = card?.dataset.game;
+      if (!game) return;
+      mountGame(game);
+      setActiveGameCard(game);
+      history.replaceState(null, '', `?game=${game}`);
     });
   });
 
   document.querySelectorAll('.game-card').forEach(card => {
-    card.addEventListener('click', () => mountGame(card.dataset.game));
+    card.addEventListener('click', event => {
+      if (event.target.closest('a')) return;
+      mountGame(card.dataset.game);
+      setActiveGameCard(card.dataset.game);
+      history.replaceState(null, '', `?game=${card.dataset.game}`);
+    });
   });
+
+  const selectedGame = getSelectedGameFromUrl();
+  if (selectedGame) {
+    mountGame(selectedGame);
+    setActiveGameCard(selectedGame);
+  }
 }
 
 export { loadGameState, initGameNavigation, addActivity };

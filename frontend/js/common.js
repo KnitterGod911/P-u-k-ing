@@ -97,8 +97,7 @@ function isAdmin() {
   const username = localStorage.getItem(storageKeys.profileName)
     || localStorage.getItem(storageKeys.chatUsername);
   if (!username) return false;
-  const admins = ensureAdminList();
-  return admins.includes(username);
+  return getAdminUsers().includes(username);
 }
 
 function updateAdminNav() {
@@ -124,8 +123,6 @@ function initCommon() {
   initThemeSelection();
 }
 
-export { initCommon, saveProfileData, getStoredUser, applyAnimationsPreference, isAdmin, getAdminUsers, setAdminUsers };
-
 function saveProfileData({ name, bio, avatar }) {
   if (name) localStorage.setItem(storageKeys.profileName, name);
   if (bio) localStorage.setItem(storageKeys.profileBio, bio);
@@ -133,4 +130,4 @@ function saveProfileData({ name, bio, avatar }) {
   applyProfileHeader();
 }
 
-export { initCommon, saveProfileData, getStoredUser, applyAnimationsPreference };
+export { initCommon, saveProfileData, getStoredUser, applyAnimationsPreference, isAdmin, getAdminUsers, setAdminUsers };

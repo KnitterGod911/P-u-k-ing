@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUK OS | Admin Panel</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/themes/dark.css" id="themeStylesheet" />
+</head>
+<body>
+  <div class="background-layer" aria-hidden="true">
+    <span class="shape shape-1"></span>
+    <span class="shape shape-2"></span>
+    <span class="shape shape-3"></span>
+    <span class="shape shape-4"></span>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">PUK</div>
+        <div>
+          <h1>PUK OS</h1>
+          <p>Futuristic workspace</p>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a class="nav-link" href="./index.html">Dashboard</a>
+        <a class="nav-link" href="./games.html">Games</a>
+        <a class="nav-link" href="./ai.html">AI Tools</a>
+        <a class="nav-link" href="./calculator.html">Calculator</a>
+        <a class="nav-link" href="./chat.html">Group Chat</a>
+        <a class="nav-link" href="./profile.html">Profile</a>
+        <a class="nav-link" href="./settings.html">Settings</a>
+        <a class="nav-link admin-link" href="./admin.html">Admin Panel</a>
+      </nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Admin Control Panel</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-preview">
+            <span class="user-badge">PU</span>
+            <div>
+              <p class="user-name">Admin</p>
+              <small class="user-subtitle">Manage the platform.</small>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="page-shell admin-panel">
+        <div class="glass-panel admin-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Administrator</p>
+              <h2>Role controls</h2>
+              <p>Manage admin access, ban users, and issue temporary kicks from the group chat.</p>
+            </div>
+            <div class="panel-label">Admin only</div>
+          </div>
+
+          <div class="admin-status" id="adminStatus">Loading admin access...</div>
+
+          <div class="admin-actions">
+            <div class="admin-card">
+              <h3>Grant admin access</h3>
+              <label>
+                Username
+                <input id="adminUsernameInput" type="text" placeholder="Enter a username" />
+              </label>
+              <button class="primary-btn" id="grantAdminBtn" type="button">Grant Admin</button>
+            </div>
+
+            <div class="admin-card">
+              <h3>Temporary ban user</h3>
+              <label>
+                Username
+                <input id="banUsernameInput" type="text" placeholder="Enter username to ban" />
+              </label>
+              <label>
+                Reason
+                <input id="banReasonInput" type="text" placeholder="Reason for ban" />
+              </label>
+              <label>
+                Duration (days)
+                <input id="banDaysInput" type="number" min="1" max="30" value="1" />
+              </label>
+              <button class="primary-btn" id="banUserBtn" type="button">Ban User</button>
+            </div>
+          </div>
+
+          <div class="admin-actions">
+            <div class="admin-card">
+              <h3>Kick user</h3>
+              <label>
+                Username
+                <input id="kickUsernameInput" type="text" placeholder="Enter username to kick" />
+              </label>
+              <button class="ghost-btn" id="kickUserBtn" type="button">Kick for 1 minute</button>
+            </div>
+
+            <div class="admin-card">
+              <h3>Current admins</h3>
+              <ul id="adminList"></ul>
+            </div>
+          </div>
+
+          <div class="admin-actions">
+            <div class="admin-card full-width">
+              <h3>Active bans</h3>
+              <ul id="banList"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./js/common.js"></script>
+  <script type="module" src="./js/admin-page.js"></script>
+</body>
+</html>

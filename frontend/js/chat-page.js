@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('chatNameOverlay');
   const nameInput = document.getElementById('chatUsernameInput');
   const overlayForm = document.getElementById('chatNameForm');
+  const banNotice = document.getElementById('banNotice');
   const messageFeed = document.getElementById('messageFeed');
   const chatInput = document.getElementById('chatMessageInput');
   const chatSendBtn = document.getElementById('chatSendBtn');
@@ -53,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.toggle('active', button.dataset.group === group || isPrivateTab);
     });
     renderMessages();
+    updateOnlineCount();
+    updateChatHeader();
   }
 
   function updateOnlineCount() {
@@ -91,10 +94,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function updateBanNotice() {
+    if (!banNotice) return;
+    banNotice.textContent = '';
+    banNotice.classList.add('hidden');
+  }
+
   function updateCallStatus(text) {
     if (callStatus) {
       callStatus.textContent = text;
     }
+  }
+
+  function addMessage(text) {
+    const name = getUsername();
+    if (!name || !text.trim()) return;
+    const messages = loadMessages();
+    messages.push({
+      name,
+      text: text.trim(),
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      group: currentGroup
+    });
+    saveMessages(messages);
+    renderMessages();
+    updateOnlineCount();
   }
 
   async function startCall(mode) {
@@ -144,22 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCallStatus('No active call.');
   }
 
-  function addMessage(text) {
-    const name = getUsername();
-    if (!name || !text.trim()) return;
-    const messages = loadMessages();
-    const message = {
-      name,
-      text: text.trim(),
-      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      group: currentGroup
-    };
-    messages.push(message);
-    saveMessages(messages);
-    renderMessages();
-    updateOnlineCount();
-  }
-
   groupButtons.forEach(button => {
     button.addEventListener('click', () => setActiveGroup(button.dataset.group));
   });
@@ -189,8 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setUsername(value);
     showOverlay(false);
     resetChatHeader();
+    updateBanNotice();
+    setActiveGroup(currentGroup);
     renderMessages();
-    updateOnlineCount();
   });
 
   chatSendBtn?.addEventListener('click', handleSend);
@@ -207,8 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     showOverlay(false);
     resetChatHeader();
+    updateBanNotice();
     setActiveGroup(currentGroup);
     renderMessages();
-    updateOnlineCount();
   }
 });
