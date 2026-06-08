@@ -1,6 +1,7 @@
 import { loadTheme, initThemeSelection } from './theme.js';
 
 const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+const adminLink = document.querySelector('.admin-link');
 const userBadge = document.querySelector('.user-badge');
 const userNameText = document.querySelector('.user-name');
 const userSubtitle = document.querySelector('.user-subtitle');
@@ -11,7 +12,8 @@ const storageKeys = {
   profileBio: 'pukProfileBio',
   profilePic: 'pukProfilePic',
   chatUsername: 'pukChatUsername',
-  animationsEnabled: 'pukAnimationsEnabled'
+  animationsEnabled: 'pukAnimationsEnabled',
+  adminUsers: 'pukAdminUsers'
 };
 
 function setActiveNav() {
@@ -66,6 +68,44 @@ function applyAnimationsPreference() {
   }
 }
 
+function getAdminUsers() {
+  try {
+    const list = JSON.parse(localStorage.getItem(storageKeys.adminUsers) || '[]');
+    return Array.isArray(list) ? list : [];
+  } catch {
+    return [];
+  }
+}
+
+function setAdminUsers(users) {
+  localStorage.setItem(storageKeys.adminUsers, JSON.stringify(users));
+}
+
+function ensureAdminList() {
+  const admins = getAdminUsers();
+  if (admins.length) return admins;
+  const currentName = localStorage.getItem(storageKeys.profileName)
+    || localStorage.getItem(storageKeys.chatUsername);
+  if (currentName) {
+    setAdminUsers([currentName]);
+    return [currentName];
+  }
+  return [];
+}
+
+function isAdmin() {
+  const username = localStorage.getItem(storageKeys.profileName)
+    || localStorage.getItem(storageKeys.chatUsername);
+  if (!username) return false;
+  const admins = ensureAdminList();
+  return admins.includes(username);
+}
+
+function updateAdminNav() {
+  if (!adminLink) return;
+  adminLink.style.display = isAdmin() ? 'inline-flex' : 'none';
+}
+
 function bindAnimationToggle() {
   if (!animationToggle) return;
   animationToggle.addEventListener('change', event => {
@@ -77,11 +117,14 @@ function bindAnimationToggle() {
 function initCommon() {
   loadTheme();
   setActiveNav();
+  updateAdminNav();
   applyProfileHeader();
   applyAnimationsPreference();
   bindAnimationToggle();
   initThemeSelection();
 }
+
+export { initCommon, saveProfileData, getStoredUser, applyAnimationsPreference, isAdmin, getAdminUsers, setAdminUsers };
 
 function saveProfileData({ name, bio, avatar }) {
   if (name) localStorage.setItem(storageKeys.profileName, name);

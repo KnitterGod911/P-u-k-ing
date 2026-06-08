@@ -56,6 +56,10 @@
   transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition-fast);
 }
 
+.admin-link {
+  display: none;
+}
+
 .nav-link.active,
 .nav-link:hover {
   background: rgba(116, 178, 255, 0.14);
