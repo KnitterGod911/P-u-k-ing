@@ -168,6 +168,11 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.calc-grid button {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
 .calc-btn.double {
   grid-column: span 2;
 }

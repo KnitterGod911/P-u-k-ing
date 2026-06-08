@@ -71,6 +71,7 @@
 .main-panel {
   padding: var(--space-6);
   width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
   position: relative;
   z-index: 2;
