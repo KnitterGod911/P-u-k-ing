@@ -326,6 +326,75 @@
   z-index: 60;
 }
 
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.group-tabs {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.group-tab {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.group-tab.active,
+.group-tab:hover {
+  background: rgba(var(--accent-rgb), 0.18);
+  border-color: rgba(var(--accent-rgb), 0.28);
+  color: var(--accent);
+}
+
+.call-controls {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.group-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.group-form input {
+  background: var(--surface-strong);
+  border-color: var(--border);
+}
+
+.call-panel {
+  padding: var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.call-panel video {
+  width: 100%;
+  min-height: 220px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  background: #08111f;
+}
+
+.call-panel button {
+  justify-self: start;
+}
+
 .chat-overlay-card {
   width: min(420px, calc(100vw - 40px));
   padding: var(--space-5);
