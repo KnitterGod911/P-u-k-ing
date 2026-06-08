@@ -5,7 +5,11 @@ const aiInput = document.getElementById('aiInput');
 const aiSendBtn = document.getElementById('aiSendBtn');
 const newChatBtn = document.getElementById('newChatBtn');
 
-let conversation = [];
+let conversation = JSON.parse(localStorage.getItem('pukAIHistory') || '[]');
+
+function saveAIHistory() {
+  localStorage.setItem('pukAIHistory', JSON.stringify(conversation));
+}
 
 function renderAIChat() {
   aiChatBox.innerHTML = conversation.map(entry => `
@@ -19,6 +23,7 @@ function renderAIChat() {
 
 function addAIHistoryEntry(role, text) {
   conversation.push({ role, text, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+  saveAIHistory();
   renderAIChat();
 }
 
@@ -58,6 +63,7 @@ function initAIChat() {
   });
   newChatBtn.addEventListener('click', () => {
     conversation = [];
+    saveAIHistory();
     renderAIChat();
   });
   renderAIChat();

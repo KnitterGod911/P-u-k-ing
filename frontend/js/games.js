@@ -11,7 +11,9 @@ function loadGameState() {
   const stored = JSON.parse(localStorage.getItem('pukGameState') || '{}');
   state.score = stored.highScore || 0;
   state.history = stored.activity || [];
-  gamesHighScore.textContent = state.score;
+  if (gamesHighScore) {
+    gamesHighScore.textContent = state.score;
+  }
   renderRecentActivity();
 }
 
@@ -23,6 +25,7 @@ function saveGameState() {
 }
 
 function renderRecentActivity() {
+  if (!recentActivityList) return;
   recentActivityList.innerHTML = '';
   if (!state.history.length) {
     recentActivityList.innerHTML = '<li>No activity yet. Launch a tool to begin.</li>';

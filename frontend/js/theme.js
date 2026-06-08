@@ -15,10 +15,16 @@ function setActiveThemeButton(theme) {
 
 function applyTheme(theme) {
   const selectedTheme = themes[theme] ? theme : 'dark';
-  themeLink.href = themes[selectedTheme];
+  if (themeLink) {
+    themeLink.href = themes[selectedTheme];
+  }
   localStorage.setItem('pukTheme', selectedTheme);
   document.documentElement.dataset.theme = selectedTheme;
   setActiveThemeButton(selectedTheme);
+  const themeSummary = document.getElementById('themeSummary');
+  if (themeSummary) {
+    themeSummary.textContent = selectedTheme;
+  }
 }
 
 function loadTheme() {

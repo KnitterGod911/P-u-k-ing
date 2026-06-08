@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUK OS | Settings</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/themes/dark.css" id="themeStylesheet" />
+</head>
+<body>
+  <div class="background-layer" aria-hidden="true">
+    <span class="shape shape-1"></span>
+    <span class="shape shape-2"></span>
+    <span class="shape shape-3"></span>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">PUK</div>
+        <div>
+          <h1>PUK OS</h1>
+          <p>Futuristic workspace</p>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a class="nav-link" href="./index.html">Dashboard</a>
+        <a class="nav-link" href="./games.html">Games</a>
+        <a class="nav-link" href="./ai.html">AI Tools</a>
+        <a class="nav-link" href="./calculator.html">Calculator</a>
+        <a class="nav-link" href="./chat.html">Group Chat</a>
+        <a class="nav-link" href="./profile.html">Profile</a>
+        <a class="nav-link" href="./settings.html">Settings</a>
+      </nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Settings</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-preview">
+            <span class="user-badge">PU</span>
+            <div>
+              <p class="user-name">Guest</p>
+              <small class="user-subtitle">Customize the OS experience.</small>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="page-shell settings-grid">
+        <article class="settings-card glass-panel">
+          <div class="panel-label">Theme</div>
+          <div class="toggle-group">
+            <button class="toggle-option active" data-theme="dark">Dark Futuristic</button>
+            <button class="toggle-option" data-theme="neon">Neon Cyber</button>
+            <button class="toggle-option" data-theme="light">Minimal Light</button>
+          </div>
+          <p class="settings-note">Current theme: <span id="themeSummary">dark</span></p>
+        </article>
+        <article class="settings-card glass-panel">
+          <div class="panel-label">Animations</div>
+          <label class="switch">
+            <input type="checkbox" id="animationsToggle" />
+            <span class="slider"></span>
+          </label>
+          <p class="settings-note">Toggle animations for a faster or more cinematic UI.</p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./js/common.js"></script>
+  <script type="module" src="./js/settings-page.js"></script>
+</body>
+</html>

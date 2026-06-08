@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUK OS | Group Chat</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/themes/dark.css" id="themeStylesheet" />
+</head>
+<body>
+  <div class="background-layer" aria-hidden="true">
+    <span class="shape shape-1"></span>
+    <span class="shape shape-2"></span>
+    <span class="shape shape-3"></span>
+    <span class="shape shape-4"></span>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">PUK</div>
+        <div>
+          <h1>PUK OS</h1>
+          <p>Futuristic workspace</p>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a class="nav-link" href="./index.html">Dashboard</a>
+        <a class="nav-link" href="./games.html">Games</a>
+        <a class="nav-link" href="./ai.html">AI Tools</a>
+        <a class="nav-link" href="./calculator.html">Calculator</a>
+        <a class="nav-link" href="./chat.html">Group Chat</a>
+        <a class="nav-link" href="./profile.html">Profile</a>
+        <a class="nav-link" href="./settings.html">Settings</a>
+      </nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Group Chat</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-preview">
+            <span class="user-badge">PU</span>
+            <div>
+              <p class="user-name">Guest</p>
+              <small class="user-subtitle">Stay connected.</small>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="page-shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Live Lounge</p>
+            <h2>Group Chat</h2>
+            <p>Create a display name and chat with a futuristic interface that preserves sessions locally.</p>
+          </div>
+          <div class="chat-status">
+            <strong id="onlineCount">1</strong>
+            <span>online now</span>
+          </div>
+        </div>
+
+        <div class="glass-panel chat-shell">
+          <div class="chat-badge-row">
+            <div class="user-preview small">
+              <span class="user-badge" id="chatUserBadge">PU</span>
+              <div>
+                <p id="chatUserName">Guest</p>
+                <small>Live identity</small>
+              </div>
+            </div>
+            <p class="chat-note">Type a message to begin. Your name is saved locally for the next session.</p>
+          </div>
+          <div class="chat-room" id="messageFeed"></div>
+          <div class="chat-input-row">
+            <input id="chatMessageInput" type="text" placeholder="Type a message..." autocomplete="off" />
+            <button class="primary-btn" id="chatSendBtn">Send</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="chat-overlay hidden" id="chatNameOverlay">
+    <form class="chat-overlay-card" id="chatNameForm">
+      <h2>Enter a chat name</h2>
+      <p>Pick a handle to join the group chat.</p>
+      <input id="chatUsernameInput" type="text" placeholder="Your display name" autocomplete="off" required />
+      <button class="primary-btn" type="submit">Join</button>
+    </form>
+  </div>
+
+  <script type="module" src="./js/common.js"></script>
+  <script type="module" src="./js/chat-page.js"></script>
+</body>
+</html>

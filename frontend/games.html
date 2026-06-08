@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUK OS | Games</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/themes/dark.css" id="themeStylesheet" />
+</head>
+<body>
+  <div class="background-layer" aria-hidden="true">
+    <span class="shape shape-1"></span>
+    <span class="shape shape-2"></span>
+    <span class="shape shape-3"></span>
+    <span class="shape shape-4"></span>
+    <span class="shape shape-5"></span>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">PUK</div>
+        <div>
+          <h1>PUK OS</h1>
+          <p>Futuristic workspace</p>
+        </div>
+      </div>
+      <nav class="nav-menu">
+        <a class="nav-link" href="./index.html">Dashboard</a>
+        <a class="nav-link" href="./games.html">Games</a>
+        <a class="nav-link" href="./ai.html">AI Tools</a>
+        <a class="nav-link" href="./calculator.html">Calculator</a>
+        <a class="nav-link" href="./chat.html">Group Chat</a>
+        <a class="nav-link" href="./profile.html">Profile</a>
+        <a class="nav-link" href="./settings.html">Settings</a>
+      </nav>
+    </aside>
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Games</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="user-preview">
+            <span class="user-badge">PU</span>
+            <div>
+              <p class="user-name">Guest</p>
+              <small class="user-subtitle">Play like a cyber-native.</small>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="page-shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Arcade Hub</p>
+            <h2>Choose your mission</h2>
+            <p>Start a game inside the PUK OS experience. Each card opens a fast interactive session.</p>
+          </div>
+          <div class="score-summary">
+            <span>High Score</span>
+            <strong id="gamesHighScore">0</strong>
+          </div>
+        </div>
+
+        <div class="game-card-grid">
+          <article class="game-card" data-game="rps">
+            <span class="panel-label">Classic</span>
+            <h3>Rock Paper Scissors</h3>
+            <p>Outplay the AI with instant rounds and streak tracking.</p>
+            <button class="primary-btn">Play</button>
+          </article>
+
+          <article class="game-card" data-game="tictactoe">
+            <span class="panel-label">Strategy</span>
+            <h3>Tic Tac Toe</h3>
+            <p>Smart grid gameplay with instant feedback and history.</p>
+            <button class="primary-btn">Play</button>
+          </article>
+
+          <article class="game-card" data-game="guessing">
+            <span class="panel-label">Mystery</span>
+            <h3>Number Guess</h3>
+            <p>Guess the hidden target and improve your odds each turn.</p>
+            <button class="primary-btn">Play</button>
+          </article>
+
+          <article class="game-card placeholder-card" data-game="snake">
+            <span class="panel-label">Coming soon</span>
+            <h3>Snake</h3>
+            <p>Soon you'll navigate a cyber serpent through neon corridors.</p>
+            <button class="secondary-btn" disabled>Coming soon</button>
+          </article>
+        </div>
+
+        <div class="game-panel glass-panel" id="gameContent">
+          <div class="panel-label">Session area</div>
+          <p>Select a game card to begin a live game inside the terminal.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./js/common.js"></script>
+  <script type="module" src="./js/games-page.js"></script>
+</body>
+</html>

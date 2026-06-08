@@ -26,13 +26,13 @@
         </div>
       </div>
       <nav class="nav-menu">
-        <button class="nav-link active" data-page="dashboard">Dashboard</button>
-        <button class="nav-link" data-page="games">Games</button>
-        <button class="nav-link" data-page="ai">AI Tools</button>
-        <button class="nav-link" data-page="calculator">Calculator</button>
-        <button class="nav-link" data-page="chat">Group Chat</button>
-        <button class="nav-link" data-page="profile">Profile</button>
-        <button class="nav-link" data-page="settings">Settings</button>
+        <a class="nav-link" href="./index.html">Dashboard</a>
+        <a class="nav-link" href="./games.html">Games</a>
+        <a class="nav-link" href="./ai.html">AI Tools</a>
+        <a class="nav-link" href="./calculator.html">Calculator</a>
+        <a class="nav-link" href="./chat.html">Group Chat</a>
+        <a class="nav-link" href="./profile.html">Profile</a>
+        <a class="nav-link" href="./settings.html">Settings</a>
       </nav>
       <div class="sidebar-footer">
         <button id="signOutBtn" class="ghost-btn">Logout</button>
@@ -64,8 +64,8 @@
             <p>One platform for games, AI tools, chat, and productivity.</p>
           </div>
           <div class="hero-actions">
-            <button class="primary-btn" data-page="games">Play now</button>
-            <button class="secondary-btn" data-page="chat">Join chat</button>
+          <a class="primary-btn" href="./games.html">Play now</a>
+          <a class="secondary-btn" href="./chat.html">Join chat</a>
           </div>
         </div>
 
@@ -73,10 +73,10 @@
           <article class="info-card">
             <h3>Quick Access</h3>
             <div class="card-grid">
-              <button class="tile-card" data-page="games">Games</button>
-              <button class="tile-card" data-page="ai">AI</button>
-              <button class="tile-card" data-page="calculator">Calculator</button>
-              <button class="tile-card" data-page="chat">Chat</button>
+              <a class="tile-card" href="./games.html">Games</a>
+              <a class="tile-card" href="./ai.html">AI</a>
+              <a class="tile-card" href="./calculator.html">Calculator</a>
+              <a class="tile-card" href="./chat.html">Chat</a>
             </div>
           </article>
 
@@ -96,7 +96,7 @@
                 <small id="profileBio">Sign in to track your stats and customize your profile.</small>
               </div>
             </div>
-            <button class="ghost-btn" data-page="profile">View Profile</button>
+            <a class="ghost-btn" href="./profile.html">View Profile</a>
           </article>
         </div>
       </section>
@@ -304,6 +304,7 @@
     </div>
   </div>
 
-  <script type="module" src="./js/app.js"></script>
+  <script type="module" src="./js/common.js"></script>
+  <script type="module" src="./js/dashboard-page.js"></script>
 </body>
 </html>

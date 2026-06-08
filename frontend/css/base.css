@@ -89,6 +89,12 @@ a {
   color: var(--text-primary);
 }
 
+html[data-animations='off'] *,
+body[data-animations='off'] * {
+  animation: none !important;
+  transition: none !important;
+}
+
 .background-layer {
   position: absolute;
   inset: 0;
