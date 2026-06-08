@@ -25,12 +25,17 @@
   --shadow-strong: 0 24px 80px rgba(0, 0, 0, 0.22);
   --border-width: 1px;
   --transition: 220ms ease;
+  --transition-fast: 180ms ease;
   --max-width: 1440px;
 
   --font-size-base: 1rem;
   --font-size-lg: 1.1rem;
   --font-size-xl: 1.35rem;
   --font-size-xxl: 1.7rem;
+
+  --surface-elevated: rgba(24, 36, 54, 0.96);
+  --button-glow: rgba(116, 178, 255, 0.18);
+  --bg-layer: radial-gradient(circle at 18% 12%, rgba(116, 178, 255, 0.12), transparent 16%), radial-gradient(circle at 85% 10%, rgba(84, 226, 169, 0.08), transparent 14%), radial-gradient(circle at 88% 85%, rgba(255, 95, 122, 0.08), transparent 16%);
 }
 
 * {
@@ -49,6 +54,12 @@ body {
   background: var(--background);
   color: var(--text-primary);
   line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+  background-image: var(--bg-layer);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 button,
@@ -76,6 +87,106 @@ a {
 ::selection {
   background: rgba(var(--accent-rgb), 0.2);
   color: var(--text-primary);
+}
+
+.background-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  opacity: 0.32;
+  filter: blur(18px);
+}
+
+.shape-1 {
+  width: 260px;
+  height: 260px;
+  top: 6%;
+  left: 4%;
+  background: rgba(116, 178, 255, 0.18);
+  animation: floatSlow 18s ease-in-out infinite alternate;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 24%;
+  right: 5%;
+  background: rgba(84, 226, 169, 0.18);
+  animation: floatRotate 20s linear infinite;
+}
+
+.shape-3 {
+  width: 140px;
+  height: 140px;
+  top: 50%;
+  left: 12%;
+  background: rgba(255, 95, 122, 0.14);
+  animation: floatDrift 14s ease-in-out infinite alternate;
+}
+
+.shape-4 {
+  width: 200px;
+  height: 200px;
+  bottom: 12%;
+  right: 12%;
+  background: rgba(116, 178, 255, 0.12);
+  animation: floatSlow 22s ease-in-out infinite alternate-reverse;
+}
+
+.shape-5 {
+  width: 120px;
+  height: 120px;
+  bottom: 24%;
+  left: 18%;
+  background: rgba(84, 226, 169, 0.12);
+  animation: floatDrift 16s ease-in-out infinite alternate;
+}
+
+.shape-6 {
+  width: 90px;
+  height: 90px;
+  top: 70%;
+  right: 26%;
+  background: rgba(255, 95, 122, 0.12);
+  animation: floatRotate 12s linear infinite;
+}
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-18px) rotate(12deg);
+  }
+}
+
+@keyframes floatDrift {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(10px, -18px) rotate(-8deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+@keyframes floatRotate {
+  from {
+    transform: rotate(0deg) translateY(0px);
+  }
+  to {
+    transform: rotate(360deg) translateY(-6px);
+  }
 }
 
 .hidden {

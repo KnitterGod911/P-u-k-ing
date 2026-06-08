@@ -8,6 +8,19 @@
   background: var(--surface);
   border-radius: var(--radius-xl);
   padding: var(--space-5);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+}
+
+.hero-card:hover,
+.info-card:hover,
+.game-card:hover,
+.calculator-card:hover,
+.profile-card:hover,
+.profile-stats-card:hover,
+.settings-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22);
+  border-color: rgba(116, 178, 255, 0.16);
 }
 
 .hero-card {
@@ -67,7 +80,7 @@
 .game-card-grid {
   display: grid;
   gap: var(--space-4);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .game-card {
@@ -189,5 +202,33 @@
   .settings-grid,
   .game-card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    left: -100%;
+    top: 0;
+    max-width: 320px;
+    transition: left var(--transition);
+  }
+
+  .sidebar.sidebar-open {
+    left: 0;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
   }
 }

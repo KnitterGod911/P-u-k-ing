@@ -38,22 +38,26 @@ button {
   padding: 14px 18px;
   font-weight: 700;
   min-height: 48px;
+  border-radius: var(--radius-md);
 }
 
 .primary-btn {
   color: var(--brand-text);
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  box-shadow: 0 18px 40px rgba(var(--accent-rgb), 0.15);
 }
 
 .secondary-btn {
-  background: var(--accent-soft);
+  background: rgba(116, 178, 255, 0.14);
   color: var(--text-primary);
+  border: 1px solid rgba(116, 178, 255, 0.18);
 }
 
 .ghost-btn,
 .link-btn {
   background: transparent;
   color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .btn:hover,
@@ -62,7 +66,17 @@ button {
 .ghost-btn:hover,
 .link-btn:hover,
 .toggle-option:hover {
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 22px 45px rgba(var(--accent-rgb), 0.16);
+}
+
+.btn:active,
+.primary-btn:active,
+.secondary-btn:active,
+.ghost-btn:active,
+.link-btn:active,
+.toggle-option:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .toggle-option.active {
