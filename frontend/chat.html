@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/themes/dark.css" id="themeStylesheet" />
 </head>
-<body>
+<body class="fullscreen-page">
   <div class="background-layer" aria-hidden="true">
     <span class="shape shape-1"></span>
     <span class="shape shape-2"></span>
@@ -37,6 +37,7 @@
     <main class="main-panel">
       <header class="topbar">
         <div class="topbar-left">
+          <a class="ghost-btn back-btn" href="./index.html">Back</a>
           <h1 class="page-title">Group Chat</h1>
         </div>
         <div class="topbar-right">
@@ -62,50 +63,55 @@
           </div>
         </div>
 
-        <div class="glass-panel chat-shell">
-          <div class="chat-header">
-            <div class="group-tabs">
-              <button class="group-tab active" data-group="public">Public Lounge</button>
-              <button class="group-tab" data-group="friends">Friends Circle</button>
-              <button class="group-tab" data-group="private">Private Room</button>
-            </div>
-            <div class="call-controls">
-              <button class="secondary-btn" id="voiceCallBtn">Voice Call</button>
-              <button class="secondary-btn" id="videoCallBtn">Video Call</button>
-            </div>
-          </div>
-
-          <form class="group-form" id="privateGroupForm">
-            <input id="privateGroupInput" type="text" placeholder="Enter private room name" autocomplete="off" />
-            <button class="ghost-btn" type="submit">Join private room</button>
-          </form>
-
-          <div class="chat-badge-row">
-            <div class="user-preview small">
-              <span class="user-badge" id="chatUserBadge">PU</span>
-              <div>
-                <p id="chatUserName">Guest</p>
-                <small>Live identity</small>
+        <div class="page-shell chat-fullscreen">
+          <div class="glass-panel chat-shell-panel">
+            <div class="chat-header">
+              <div class="group-tabs">
+                <button class="group-tab active" data-group="public">Public Lounge</button>
+                <button class="group-tab" data-group="friends">Friends Circle</button>
+                <button class="group-tab" data-group="private">Private Room</button>
+              </div>
+              <div class="call-controls">
+                <button class="secondary-btn" id="voiceCallBtn">Voice Call</button>
+                <button class="secondary-btn" id="videoCallBtn">Video Call</button>
               </div>
             </div>
-            <p class="chat-note">Type a message to begin. Your name is saved locally for the next session.</p>
-          </div>
-          <div class="ban-notice hidden" id="banNotice"></div>
-          <div class="chat-room" id="messageFeed"></div>
-          <div class="chat-input-row">
-            <input id="chatMessageInput" type="text" placeholder="Type a message..." autocomplete="off" />
-            <button class="primary-btn" id="chatSendBtn">Send</button>
-          </div>
-        </div>
 
-        <aside class="call-panel glass-panel">
-          <div>
-            <div class="panel-label">Call status</div>
-            <p id="callStatus">No active call.</p>
+            <form class="group-form" id="privateGroupForm">
+              <input id="privateGroupInput" type="text" placeholder="Enter private room name" autocomplete="off" />
+              <button class="ghost-btn" type="submit">Join private room</button>
+            </form>
+
+            <div class="chat-badge-row">
+              <div class="user-preview small">
+                <span class="user-badge" id="chatUserBadge">PU</span>
+                <div>
+                  <p id="chatUserName">Guest</p>
+                  <small>Live identity</small>
+                </div>
+              </div>
+              <p class="chat-note">Type a message to begin. Your name is saved locally for the next session.</p>
+            </div>
+            <div class="ban-notice hidden" id="banNotice"></div>
+            <div class="chat-room" id="messageFeed"></div>
+            <div class="chat-input-row">
+              <input id="chatMessageInput" type="text" placeholder="Type a message..." autocomplete="off" />
+              <button class="primary-btn" id="chatSendBtn">Send</button>
+            </div>
           </div>
-          <video id="localVideo" autoplay muted playsinline class="hidden"></video>
-          <button class="ghost-btn hidden" id="endCallBtn" type="button">End Call</button>
-        </aside>
+
+          <aside class="call-panel glass-panel">
+            <div>
+              <div class="panel-label">Call status</div>
+              <p id="callStatus">No active call.</p>
+              <p class="call-summary" id="callSummary">Connect with other chat members in voice or video rooms.</p>
+              <div class="call-members" id="callParticipants"></div>
+            </div>
+            <video id="localVideo" autoplay muted playsinline class="hidden"></video>
+            <button class="primary-btn" id="callActionBtn" type="button">Start Call</button>
+            <button class="ghost-btn hidden" id="endCallBtn" type="button">End Call</button>
+          </aside>
+        </div>
       </section>
     </main>
   </div>

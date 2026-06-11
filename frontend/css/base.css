@@ -35,7 +35,7 @@
 
   --surface-elevated: rgba(24, 36, 54, 0.96);
   --button-glow: rgba(116, 178, 255, 0.18);
-  --bg-layer: radial-gradient(circle at 18% 12%, rgba(116, 178, 255, 0.12), transparent 16%), radial-gradient(circle at 85% 10%, rgba(84, 226, 169, 0.08), transparent 14%), radial-gradient(circle at 88% 85%, rgba(255, 95, 122, 0.08), transparent 16%);
+  --bg-layer: radial-gradient(circle at 18% 12%, rgba(116, 178, 255, 0.18), transparent 16%), radial-gradient(circle at 85% 10%, rgba(74, 178, 255, 0.12), transparent 14%), radial-gradient(circle at 88% 85%, rgba(21, 124, 255, 0.12), transparent 18%);
 }
 
 * {
@@ -134,8 +134,35 @@ body[data-animations='off'] * {
   height: 140px;
   top: 50%;
   left: 12%;
-  background: rgba(255, 95, 122, 0.14);
+  background: rgba(116, 178, 255, 0.14);
   animation: floatDrift 14s ease-in-out infinite alternate;
+}
+
+.shape-4 {
+  width: 220px;
+  height: 220px;
+  top: 70%;
+  right: 20%;
+  background: rgba(64, 124, 255, 0.18);
+  animation: floatSlow 22s ease-in-out infinite alternate;
+}
+
+.shape-5 {
+  width: 120px;
+  height: 120px;
+  bottom: 10%;
+  left: 30%;
+  background: rgba(84, 226, 255, 0.12);
+  animation: floatRotate 18s linear infinite;
+}
+
+.shape-6 {
+  width: 180px;
+  height: 180px;
+  bottom: 15%;
+  right: 15%;
+  background: rgba(42, 92, 255, 0.16);
+  animation: floatDrift 16s ease-in-out infinite alternate;
 }
 
 .shape-4 {

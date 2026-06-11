@@ -192,10 +192,10 @@ function setActiveGameCard(gameId) {
 }
 
 function initGameNavigation() {
-  document.querySelectorAll('.game-card a').forEach(link => {
-    link.addEventListener('click', event => {
+  document.querySelectorAll('.game-start-btn, .game-card a').forEach(control => {
+    control.addEventListener('click', event => {
       event.preventDefault();
-      const card = link.closest('.game-card');
+      const card = control.closest('.game-card');
       const game = card?.dataset.game;
       if (!game) return;
       mountGame(game);
@@ -206,10 +206,12 @@ function initGameNavigation() {
 
   document.querySelectorAll('.game-card').forEach(card => {
     card.addEventListener('click', event => {
-      if (event.target.closest('a')) return;
-      mountGame(card.dataset.game);
-      setActiveGameCard(card.dataset.game);
-      history.replaceState(null, '', `?game=${card.dataset.game}`);
+      if (event.target.closest('.game-start-btn') || event.target.closest('a')) return;
+      const game = card.dataset.game;
+      if (!game) return;
+      mountGame(game);
+      setActiveGameCard(game);
+      history.replaceState(null, '', `?game=${game}`);
     });
   });
 

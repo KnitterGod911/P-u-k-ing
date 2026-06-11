@@ -23,16 +23,88 @@
   border-color: rgba(116, 178, 255, 0.16);
 }
 
-.game-card.active {
-  border-color: rgba(var(--accent-rgb), 0.55);
-  background: rgba(var(--accent-rgb), 0.08);
-}
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid rgba(116, 178, 255, 0.22);
+    background: rgba(8, 15, 34, 0.9);
+    color: var(--text-primary);
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-md);
+    transition: transform var(--transition), background var(--transition);
+  }
 
-.hero-card {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: var(--space-4);
+  .back-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(18, 35, 64, 0.95);
+  }
+
+  .chat-fullscreen {
+    grid-template-columns: 1.5fr 0.8fr;
+    gap: var(--space-5);
+  }
+
+  .chat-shell-panel {
+    display: grid;
+    gap: var(--space-4);
+    min-height: calc(100vh - 180px);
+    padding: var(--space-5);
+  }
+
+  .call-panel {
+    min-height: calc(100vh - 180px);
+    padding: var(--space-5);
+    display: grid;
+    gap: var(--space-4);
+    position: sticky;
+    top: var(--space-6);
+  }
+
+  .chat-room {
+    min-height: 420px;
+    padding: var(--space-4);
+    overflow-y: auto;
+    border-radius: var(--radius-xl);
+    background: rgba(8, 14, 30, 0.72);
+  }
+
+  .group-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .group-tab {
+    border: 1px solid rgba(116, 178, 255, 0.18);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-lg);
+    transition: background var(--transition), border-color var(--transition);
+  }
+
+  .group-tab.active,
+  .group-tab:hover {
+    background: rgba(116, 178, 255, 0.14);
+    border-color: rgba(116, 178, 255, 0.28);
+  }
+
+  .chat-input-row {
+    gap: var(--space-3);
+  }
+
+  .chat-input-row input {
+    border: 1px solid rgba(116, 178, 255, 0.18);
+    background: rgba(7, 12, 24, 0.8);
+    color: var(--text-primary);
+    padding: 1rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .chat-input-row button {
+    min-width: 120px;
+  }
 }
 
 .section-head,

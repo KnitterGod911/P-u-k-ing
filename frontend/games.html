@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/themes/dark.css" id="themeStylesheet" />
 </head>
-<body>
+<body class="fullscreen-page">
   <div class="background-layer" aria-hidden="true">
     <span class="shape shape-1"></span>
     <span class="shape shape-2"></span>
@@ -38,6 +38,7 @@
     <main class="main-panel">
       <header class="topbar">
         <div class="topbar-left">
+          <a class="ghost-btn back-btn" href="./index.html">Back</a>
           <h1 class="page-title">Games</h1>
         </div>
         <div class="topbar-right">
@@ -68,21 +69,21 @@
             <span class="panel-label">Classic</span>
             <h3>Rock Paper Scissors</h3>
             <p>Outplay the AI with instant rounds and streak tracking.</p>
-            <a class="primary-btn" href="./games.html?game=rps">Play</a>
+            <button type="button" class="primary-btn game-start-btn" data-game="rps">Play</button>
           </article>
 
           <article class="game-card" data-game="tictactoe">
             <span class="panel-label">Strategy</span>
             <h3>Tic Tac Toe</h3>
             <p>Smart grid gameplay with instant feedback and history.</p>
-            <a class="primary-btn" href="./games.html?game=tictactoe">Play</a>
+            <button type="button" class="primary-btn game-start-btn" data-game="tictactoe">Play</button>
           </article>
 
           <article class="game-card" data-game="guessing">
             <span class="panel-label">Mystery</span>
             <h3>Number Guess</h3>
             <p>Guess the hidden target and improve your odds each turn.</p>
-            <a class="primary-btn" href="./games.html?game=guessing">Play</a>
+            <button type="button" class="primary-btn game-start-btn" data-game="guessing">Play</button>
           </article>
 
           <article class="game-card placeholder-card" data-game="snake">

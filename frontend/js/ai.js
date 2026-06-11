@@ -28,8 +28,9 @@ function addAIHistoryEntry(role, text) {
 }
 
 async function sendPrompt(prompt) {
-  if (!prompt.trim()) return;
-  addAIHistoryEntry('user', prompt);
+  const trimmedPrompt = prompt.trim();
+  if (!trimmedPrompt) return;
+  addAIHistoryEntry('user', trimmedPrompt);
   aiInput.value = '';
   const typingIndicator = document.createElement('div');
   typingIndicator.className = 'message assistant typing';
@@ -41,18 +42,21 @@ async function sendPrompt(prompt) {
     const response = await fetch('/api/openai', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify({ prompt: trimmedPrompt })
     });
     const data = await response.json();
-    conversation = conversation.filter(item => item !== typingIndicator);
+    typingIndicator.remove();
     if (response.ok && data.answer) {
       addAIHistoryEntry('assistant', data.answer);
       addActivity('AI prompt sent');
     } else {
-      addAIHistoryEntry('assistant', data.error || 'AI service unavailable.');
+      const fallback = data.error || 'AI service unavailable. Try again or ask a simple question.';
+      addAIHistoryEntry('assistant', fallback);
     }
   } catch (error) {
-    addAIHistoryEntry('assistant', 'Unable to connect to AI service.');
+    typingIndicator.remove();
+    const fallbackAnswer = `I can't reach AI right now, but I heard you: "${trimmedPrompt}".`;
+    addAIHistoryEntry('assistant', fallbackAnswer);
   }
 }
 
