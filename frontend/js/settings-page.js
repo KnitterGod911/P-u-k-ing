@@ -1,13 +1,14 @@
 import { initCommon } from './common.js';
 
-const themeSummary = document.getElementById('themeSummary');
+let settingsInitialized = false;
 
 function updateThemeSummary() {
+  const themeSummary = document.getElementById('themeSummary');
   if (!themeSummary) return;
   themeSummary.textContent = localStorage.getItem('pukTheme') || 'dark';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initSettingsPage() {
   initCommon();
   const animationToggle = document.getElementById('animationsToggle');
 
@@ -20,4 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   updateThemeSummary();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (!settingsInitialized) {
+    initSettingsPage();
+    settingsInitialized = true;
+  }
+});
+
+window.addEventListener('pageChanged', event => {
+  if (event.detail.page === 'settings' && !settingsInitialized) {
+    initSettingsPage();
+    settingsInitialized = true;
+  }
 });

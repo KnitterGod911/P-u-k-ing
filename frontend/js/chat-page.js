@@ -2,6 +2,16 @@ import { initCommon } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initCommon();
+  initChatPage();
+});
+
+window.addEventListener('pageChanged', event => {
+  if (event.detail.page === 'chat') {
+    initChatPage();
+  }
+});
+
+function initChatPage() {
 
   const overlay = document.getElementById('chatNameOverlay');
   const nameInput = document.getElementById('chatUsernameInput');
@@ -363,4 +373,4 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMessages();
     renderCallStatus();
   }
-});
+}

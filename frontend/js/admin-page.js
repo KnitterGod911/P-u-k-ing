@@ -1,6 +1,8 @@
 import { initCommon, getAdminUsers, setAdminUsers, isAdmin } from './common.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
+let adminInitialized = false;
+
+function initAdminPage() {
   initCommon();
 
   const adminStatus = document.getElementById('adminStatus');
@@ -130,4 +132,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderAdminList();
   renderBanList();
   ensureAccess();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (!adminInitialized) {
+    initAdminPage();
+    adminInitialized = true;
+  }
+});
+
+window.addEventListener('pageChanged', event => {
+  if (event.detail.page === 'admin' && !adminInitialized) {
+    initAdminPage();
+    adminInitialized = true;
+  }
 });

@@ -1,7 +1,9 @@
 import { initCommon } from './common.js';
 import { setupCalculator } from './calculator.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+let calcInitialized = false;
+
+function initCalcPage() {
   initCommon();
   setupCalculator();
 
@@ -36,4 +38,18 @@ document.addEventListener('DOMContentLoaded', () => {
     assistPanel.textContent = explainExpression(calcScreen.textContent.trim());
     assistPanel.classList.add('glow-panel');
   });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (!calcInitialized) {
+    initCalcPage();
+    calcInitialized = true;
+  }
+});
+
+window.addEventListener('pageChanged', event => {
+  if (event.detail.page === 'calculator' && !calcInitialized) {
+    initCalcPage();
+    calcInitialized = true;
+  }
 });

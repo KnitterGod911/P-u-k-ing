@@ -1,6 +1,8 @@
 import { initCommon, saveProfileData, getStoredUser } from './common.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+let profileInitialized = false;
+
+function initProfilePage() {
   initCommon();
 
   const nameInput = document.getElementById('profileNameInput');
@@ -11,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const profileDisplayBio = document.getElementById('profileCardBio');
   const profileJoin = document.getElementById('profileJoinDate');
   const previewImage = document.getElementById('profilePreviewImage');
+  const profileAvatarLarge = document.getElementById('profileAvatarLarge');
 
   const profileCreatedKey = 'pukProfileCreated';
 
@@ -33,6 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         previewImage.classList.add('hidden');
       }
+    }
+
+    if (profileAvatarLarge) {
+      profileAvatarLarge.textContent = user.name.slice(0, 2).toUpperCase();
     }
   }
 
@@ -62,4 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   loadProfile();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (!profileInitialized) {
+    initProfilePage();
+    profileInitialized = true;
+  }
+});
+
+window.addEventListener('pageChanged', event => {
+  if (event.detail.page === 'profile' && !profileInitialized) {
+    initProfilePage();
+    profileInitialized = true;
+  }
 });

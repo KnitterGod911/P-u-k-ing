@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PUK | Platform</title>
+  <title>PUK OS | Unified Platform</title>
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/themes/dark.css" id="themeStylesheet" />
 </head>
@@ -21,19 +21,19 @@
       <div class="brand">
         <div class="brand-icon">PUK</div>
         <div>
-          <h1>PUK</h1>
-          <p>Play, use AI, chat, calculate</p>
+          <h1>PUK OS</h1>
+          <p>Unified Workspace</p>
         </div>
       </div>
       <nav class="nav-menu">
-        <a class="nav-link" href="./index.html">Dashboard</a>
-        <a class="nav-link" href="./games.html">Games</a>
-        <a class="nav-link" href="./ai.html">AI Tools</a>
-        <a class="nav-link" href="./calculator.html">Calculator</a>
-        <a class="nav-link" href="./chat.html">Group Chat</a>
-        <a class="nav-link" href="./profile.html">Profile</a>
-        <a class="nav-link" href="./settings.html">Settings</a>
-        <a class="nav-link admin-link hidden" href="./admin.html">Admin Panel</a>
+        <button class="nav-link" data-page="dashboard">Dashboard</button>
+        <button class="nav-link" data-page="games">Games</button>
+        <button class="nav-link" data-page="ai">AI Tools</button>
+        <button class="nav-link" data-page="calculator">Calculator</button>
+        <button class="nav-link" data-page="chat">Group Chat</button>
+        <button class="nav-link" data-page="profile">Profile</button>
+        <button class="nav-link" data-page="settings">Settings</button>
+        <button class="nav-link admin-link hidden" data-page="admin">Admin Panel</button>
       </nav>
       <div class="sidebar-footer">
         <button id="signOutBtn" class="ghost-btn">Logout</button>
@@ -46,6 +46,7 @@
         <div class="topbar-left">
           <button id="menuToggle" class="menu-toggle">☰</button>
           <h2 id="pageTitle">Dashboard</h2>
+          <button id="backBtn" class="ghost-btn back-btn hidden"></button>
         </div>
         <div class="topbar-right">
           <div class="user-preview" id="userPreview">
@@ -58,15 +59,16 @@
         </div>
       </header>
 
-      <section class="page page-active" id="dashboard">
+      <!-- DASHBOARD PAGE -->
+      <section class="page page-active" id="page-dashboard" data-page="dashboard">
         <div class="hero-card">
           <div>
             <h1>Welcome to PUK</h1>
             <p>One platform for games, AI tools, chat, and productivity.</p>
           </div>
           <div class="hero-actions">
-          <a class="primary-btn" href="./games.html">Play now</a>
-          <a class="secondary-btn" href="./chat.html">Join chat</a>
+            <button class="primary-btn" data-page="games">Play now</button>
+            <button class="secondary-btn" data-page="chat">Join chat</button>
           </div>
         </div>
 
@@ -74,10 +76,10 @@
           <article class="info-card">
             <h3>Quick Access</h3>
             <div class="card-grid">
-              <a class="tile-card" href="./games.html">Games</a>
-              <a class="tile-card" href="./ai.html">AI</a>
-              <a class="tile-card" href="./calculator.html">Calculator</a>
-              <a class="tile-card" href="./chat.html">Chat</a>
+              <button class="tile-card" data-page="games">Games</button>
+              <button class="tile-card" data-page="ai">AI</button>
+              <button class="tile-card" data-page="calculator">Calculator</button>
+              <button class="tile-card" data-page="chat">Chat</button>
             </div>
           </article>
 
@@ -97,8 +99,327 @@
                 <small id="profileBio">Sign in to track your stats and customize your profile.</small>
               </div>
             </div>
-            <a class="ghost-btn" href="./profile.html">View Profile</a>
+            <button class="ghost-btn" data-page="profile">View Profile</button>
           </article>
+        </div>
+      </section>
+
+      <!-- GAMES PAGE -->
+      <section class="page" id="page-games" data-page="games">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Arcade Hub</p>
+            <h2>Choose your mission</h2>
+            <p>Start a game inside the PUK OS experience. Each card opens a fast interactive session.</p>
+          </div>
+          <div class="score-summary">
+            <span>High Score</span>
+            <strong id="gamesHighScore">0</strong>
+          </div>
+        </div>
+
+        <div class="game-card-grid">
+          <article class="game-card" data-game="rps">
+            <span class="panel-label">Classic</span>
+            <h3>Rock Paper Scissors</h3>
+            <p>Outplay the AI with instant rounds and streak tracking.</p>
+            <button type="button" class="primary-btn game-start-btn" data-game="rps">Play</button>
+          </article>
+
+          <article class="game-card" data-game="tictactoe">
+            <span class="panel-label">Strategy</span>
+            <h3>Tic Tac Toe</h3>
+            <p>Smart grid gameplay with instant feedback and history.</p>
+            <button type="button" class="primary-btn game-start-btn" data-game="tictactoe">Play</button>
+          </article>
+
+          <article class="game-card" data-game="guessing">
+            <span class="panel-label">Mystery</span>
+            <h3>Number Guess</h3>
+            <p>Guess the hidden target and improve your odds each turn.</p>
+            <button type="button" class="primary-btn game-start-btn" data-game="guessing">Play</button>
+          </article>
+
+          <article class="game-card placeholder-card" data-game="snake">
+            <span class="panel-label">Coming soon</span>
+            <h3>Snake</h3>
+            <p>Soon you'll navigate a cyber serpent through neon corridors.</p>
+            <button class="secondary-btn" disabled>Coming soon</button>
+          </article>
+        </div>
+
+        <div class="game-panel glass-panel" id="gameContent">
+          <div class="panel-label">Session area</div>
+          <p>Select a game card to begin a live game inside the terminal.</p>
+        </div>
+      </section>
+
+      <!-- AI TOOLS PAGE -->
+      <section class="page" id="page-ai" data-page="ai">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">AI Workspace</p>
+            <h2>Ask PUK</h2>
+            <p>Chat with a futuristic assistant in a sleek AI studio built for creativity and sharp thinking.</p>
+          </div>
+          <button class="secondary-btn" id="newChatBtn">New chat</button>
+        </div>
+
+        <div class="ai-grid">
+          <div class="glass-panel ai-window">
+            <div class="chat-box" id="aiChatBox"></div>
+            <div class="chat-input-row">
+              <input id="aiInput" type="text" placeholder="Send a prompt to PUK AI..." autocomplete="off" />
+              <button class="primary-btn" id="aiSendBtn">Send</button>
+            </div>
+          </div>
+          <aside class="assistant-panel glass-panel">
+            <div class="panel-label">AI Briefing</div>
+            <p>Use this panel to keep your prompts sharp and the conversation flowing.</p>
+            <div class="hint-chip">Ask for summaries</div>
+            <div class="hint-chip">Brainstorm ideas</div>
+            <div class="hint-chip">Draft messages</div>
+            <div class="hint-chip">Ask for code examples</div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CALCULATOR PAGE -->
+      <section class="page" id="page-calculator" data-page="calculator">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Toolbox</p>
+            <h2>Calculator + AI Assist</h2>
+            <p>Compute sums, subtotals, and formulas while the assist panel explains the steps.</p>
+          </div>
+          <button class="ghost-btn" data-page="dashboard">Back to Dashboard</button>
+        </div>
+
+        <div class="two-column-panel">
+          <div class="calculator-card glass-panel">
+            <div class="calc-screen" id="calcScreen">0</div>
+            <div class="calc-grid">
+              <button class="operation-btn" data-value="clear">AC</button>
+              <button class="operation-btn" data-value="delete">⌫</button>
+              <button class="operation-btn" data-value="%">%</button>
+              <button class="operation-btn" data-value="/">÷</button>
+              <button class="calc-btn" data-value="7">7</button>
+              <button class="calc-btn" data-value="8">8</button>
+              <button class="calc-btn" data-value="9">9</button>
+              <button class="operation-btn" data-value="*">×</button>
+              <button class="calc-btn" data-value="4">4</button>
+              <button class="calc-btn" data-value="5">5</button>
+              <button class="calc-btn" data-value="6">6</button>
+              <button class="operation-btn" data-value="-">−</button>
+              <button class="calc-btn" data-value="1">1</button>
+              <button class="calc-btn" data-value="2">2</button>
+              <button class="calc-btn" data-value="3">3</button>
+              <button class="operation-btn" data-value="+">+</button>
+              <button class="calc-btn double" data-value="0">0</button>
+              <button class="calc-btn" data-value=".">.</button>
+              <button class="operation-btn primary-btn" data-value="=">=</button>
+            </div>
+          </div>
+
+          <aside class="assistant-panel glass-panel">
+            <div class="panel-label">AI Assist</div>
+            <p>Request an explanation for the current calculation or ask for next steps.</p>
+            <button class="secondary-btn" id="aiAssistBtn">Ask AI Assist</button>
+            <div class="assist-panel" id="aiAssistPanel">Press the assist button for a guided hint.</div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CHAT PAGE -->
+      <section class="page" id="page-chat" data-page="chat">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Live Lounge</p>
+            <h2>Group Chat</h2>
+            <p>Create a display name and chat with a futuristic interface that preserves sessions locally.</p>
+          </div>
+          <div class="chat-status">
+            <strong id="onlineCount">1</strong>
+            <span>online now</span>
+          </div>
+        </div>
+
+        <div class="page-shell chat-fullscreen">
+          <div class="glass-panel chat-shell-panel">
+            <div class="chat-header">
+              <div class="group-tabs">
+                <button class="group-tab active" data-group="public">Public Lounge</button>
+                <button class="group-tab" data-group="friends">Friends Circle</button>
+                <button class="group-tab" data-group="private">Private Room</button>
+              </div>
+              <div class="call-controls">
+                <button class="secondary-btn" id="voiceCallBtn">Voice Call</button>
+                <button class="secondary-btn" id="videoCallBtn">Video Call</button>
+              </div>
+            </div>
+
+            <form class="group-form" id="privateGroupForm">
+              <input id="privateGroupInput" type="text" placeholder="Enter private room name" autocomplete="off" />
+              <button class="ghost-btn" type="submit">Join private room</button>
+            </form>
+
+            <div class="chat-badge-row">
+              <div class="user-preview small">
+                <span class="user-badge" id="chatUserBadge">PU</span>
+                <div>
+                  <p id="chatUserName">Guest</p>
+                  <small>Live identity</small>
+                </div>
+              </div>
+              <p class="chat-note">Type a message to begin. Your name is saved locally for the next session.</p>
+            </div>
+            <div class="ban-notice hidden" id="banNotice"></div>
+            <div class="chat-room" id="messageFeed"></div>
+            <div class="chat-input-row">
+              <input id="chatMessageInput" type="text" placeholder="Type a message..." autocomplete="off" />
+              <button class="primary-btn" id="chatSendBtn">Send</button>
+            </div>
+          </div>
+
+          <aside class="call-panel glass-panel">
+            <div>
+              <div class="panel-label">Call status</div>
+              <p id="callStatus">No active call.</p>
+              <p class="call-summary" id="callSummary">Connect with other chat members in voice or video rooms.</p>
+              <div class="call-members" id="callParticipants"></div>
+            </div>
+            <video id="localVideo" autoplay muted playsinline class="hidden"></video>
+            <button class="primary-btn" id="callActionBtn" type="button">Start Call</button>
+            <button class="ghost-btn hidden" id="endCallBtn" type="button">End Call</button>
+          </aside>
+        </div>
+
+        <div class="chat-overlay hidden" id="chatNameOverlay">
+          <form class="chat-overlay-card" id="chatNameForm">
+            <h2>Enter a chat name</h2>
+            <p>Pick a handle to join the group chat.</p>
+            <input id="chatUsernameInput" type="text" placeholder="Your display name" autocomplete="off" required />
+            <button class="primary-btn" type="submit">Join</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- PROFILE PAGE -->
+      <section class="page" id="page-profile" data-page="profile">
+        <section class="profile-grid">
+          <div class="glass-panel profile-card">
+            <div class="avatar-preview-wrap">
+              <img id="profilePreviewImage" class="profile-image hidden" alt="Profile preview" />
+              <div class="avatar-large" id="profileAvatarLarge">PU</div>
+            </div>
+            <h2 id="profileCardName">Guest Explorer</h2>
+            <p id="profileCardBio">Your profile is ready for customization.</p>
+            <small>Member since <span id="profileJoinDate">Today</span></small>
+          </div>
+          <div class="glass-panel settings-card">
+            <div class="panel-label">Personalize</div>
+            <label>
+              Display name
+              <input id="profileNameInput" type="text" placeholder="Enter your name" />
+            </label>
+            <label>
+              Bio
+              <textarea id="profileBioInput" rows="4" placeholder="Share your story"></textarea>
+            </label>
+            <label>
+              Profile picture
+              <input id="profilePictureInput" type="file" accept="image/*" />
+            </label>
+            <button class="primary-btn" id="saveProfileBtn">Save profile</button>
+          </div>
+        </section>
+      </section>
+
+      <!-- SETTINGS PAGE -->
+      <section class="page" id="page-settings" data-page="settings">
+        <article class="settings-card glass-panel">
+          <div class="panel-label">Theme</div>
+          <div class="toggle-group">
+            <button class="toggle-option active" data-theme="dark">Dark Futuristic</button>
+            <button class="toggle-option" data-theme="neon">Neon Cyber</button>
+            <button class="toggle-option" data-theme="light">Minimal Light</button>
+          </div>
+          <p class="settings-note">Current theme: <span id="themeSummary">dark</span></p>
+        </article>
+        <article class="settings-card glass-panel">
+          <div class="panel-label">Animations</div>
+          <label class="switch">
+            <input type="checkbox" id="animationsToggle" />
+            <span class="slider"></span>
+          </label>
+          <p class="settings-note">Toggle animations for a faster or more cinematic UI.</p>
+        </article>
+      </section>
+
+      <!-- ADMIN PAGE -->
+      <section class="page" id="page-admin" data-page="admin">
+        <div class="glass-panel admin-section">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Administrator</p>
+              <h2>Role controls</h2>
+              <p>Manage admin access, ban users, and issue temporary kicks from the group chat.</p>
+            </div>
+            <div class="panel-label">Admin only</div>
+          </div>
+
+          <div class="admin-status" id="adminStatus">Loading admin access...</div>
+
+          <div class="admin-actions">
+            <div class="admin-card">
+              <h3>Grant admin access</h3>
+              <label>
+                Username
+                <input id="adminUsernameInput" type="text" placeholder="Enter a username" />
+              </label>
+              <button class="primary-btn" id="grantAdminBtn" type="button">Grant Admin</button>
+            </div>
+
+            <div class="admin-card">
+              <h3>Temporary ban user</h3>
+              <label>
+                Username
+                <input id="banUsernameInput" type="text" placeholder="Enter username to ban" />
+              </label>
+              <label>
+                Reason
+                <input id="banReasonInput" type="text" placeholder="Reason for ban" />
+              </label>
+              <label>
+                Duration (days)
+                <input id="banDaysInput" type="number" min="1" max="30" value="1" />
+              </label>
+              <button class="primary-btn" id="banUserBtn" type="button">Ban User</button>
+            </div>
+          </div>
+
+          <div class="admin-actions">
+            <div class="admin-card">
+              <h3>Kick user</h3>
+              <label>
+                Username
+                <input id="kickUsernameInput" type="text" placeholder="Enter username to kick" />
+              </label>
+              <button class="ghost-btn" id="kickUserBtn" type="button">Kick for 1 minute</button>
+            </div>
+
+            <div class="admin-card">
+              <h3>Current admins</h3>
+              <ul id="adminList"></ul>
+            </div>
+          </div>
+
+          <div class="admin-actions">
+            <div class="admin-card full-width">
+              <h3>Active bans</h3>
+              <ul id="banList"></ul>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -132,6 +453,14 @@
   </div>
 
   <script type="module" src="./js/common.js"></script>
+  <script type="module" src="./js/app-router.js"></script>
   <script type="module" src="./js/dashboard-page.js"></script>
+  <script type="module" src="./js/games-page.js"></script>
+  <script type="module" src="./js/ai-page.js"></script>
+  <script type="module" src="./js/calculator-page.js"></script>
+  <script type="module" src="./js/chat-page.js"></script>
+  <script type="module" src="./js/profile-page.js"></script>
+  <script type="module" src="./js/settings-page.js"></script>
+  <script type="module" src="./js/admin-page.js"></script>
 </body>
 </html>
