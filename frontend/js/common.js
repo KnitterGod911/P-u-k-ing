@@ -1,4 +1,5 @@
 import { loadTheme, initThemeSelection } from './theme.js';
+import { storageKeys, getStorageItem, setStorageItem } from './storage.js';
 
 const navLinks = Array.from(document.querySelectorAll('.nav-link'));
 const adminLink = document.querySelector('.admin-link');
@@ -6,15 +7,6 @@ const userBadge = document.querySelector('.user-badge');
 const userNameText = document.querySelector('.user-name');
 const userSubtitle = document.querySelector('.user-subtitle');
 const animationToggle = document.getElementById('animationsToggle');
-
-const storageKeys = {
-  profileName: 'pukProfileName',
-  profileBio: 'pukProfileBio',
-  profilePic: 'pukProfilePic',
-  chatUsername: 'pukChatUsername',
-  animationsEnabled: 'pukAnimationsEnabled',
-  adminUsers: 'pukAdminUsers'
-};
 
 function setActiveNav() {
   const path = window.location.pathname.split('/').pop() || 'index.html';
@@ -27,12 +19,12 @@ function setActiveNav() {
 
 function getStoredUser() {
   return {
-    name: localStorage.getItem(storageKeys.profileName)
-      || localStorage.getItem(storageKeys.chatUsername)
+    name: getStorageItem(storageKeys.profileName)
+      || getStorageItem(storageKeys.chatUsername)
       || 'Guest Explorer',
-    bio: localStorage.getItem(storageKeys.profileBio) || 'Your next-gen control hub.',
-    avatar: localStorage.getItem(storageKeys.profilePic) || null,
-    animationsEnabled: localStorage.getItem(storageKeys.animationsEnabled) !== 'false'
+    bio: getStorageItem(storageKeys.profileBio) || 'Your next-gen control hub.',
+    avatar: getStorageItem(storageKeys.profilePic) || null,
+    animationsEnabled: getStorageItem(storageKeys.animationsEnabled) !== false
   };
 }
 
@@ -70,7 +62,7 @@ function applyAnimationsPreference() {
 
 function getAdminUsers() {
   try {
-    const list = JSON.parse(localStorage.getItem(storageKeys.adminUsers) || '[]');
+    const list = getStorageItem(storageKeys.adminUsers, []);
     return Array.isArray(list) ? list : [];
   } catch {
     return [];
@@ -78,14 +70,14 @@ function getAdminUsers() {
 }
 
 function setAdminUsers(users) {
-  localStorage.setItem(storageKeys.adminUsers, JSON.stringify(users));
+  setStorageItem(storageKeys.adminUsers, users);
 }
 
 function ensureAdminList() {
   const admins = getAdminUsers();
   if (admins.length) return admins;
-  const currentName = localStorage.getItem(storageKeys.profileName)
-    || localStorage.getItem(storageKeys.chatUsername);
+  const currentName = getStorageItem(storageKeys.profileName)
+    || getStorageItem(storageKeys.chatUsername);
   if (currentName) {
     setAdminUsers([currentName]);
     return [currentName];
@@ -94,8 +86,8 @@ function ensureAdminList() {
 }
 
 function isAdmin() {
-  const username = localStorage.getItem(storageKeys.profileName)
-    || localStorage.getItem(storageKeys.chatUsername);
+  const username = getStorageItem(storageKeys.profileName)
+    || getStorageItem(storageKeys.chatUsername);
   if (!username) return false;
   return getAdminUsers().includes(username);
 }
@@ -108,7 +100,7 @@ function updateAdminNav() {
 function bindAnimationToggle() {
   if (!animationToggle) return;
   animationToggle.addEventListener('change', event => {
-    localStorage.setItem(storageKeys.animationsEnabled, event.target.checked ? 'true' : 'false');
+    setStorageItem(storageKeys.animationsEnabled, event.target.checked);
     applyAnimationsPreference();
   });
 }
